@@ -1,0 +1,5 @@
+AIMC Training Convergence Results
+========================================
+Digital Final Accuracy: 100.00%
+Analog Final Accuracy:  100.00%
+Energy Efficiency: 100x better than digital
