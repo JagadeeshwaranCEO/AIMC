@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ACR Device Profile",
+  "description": "Shared contract between runtime/profiler.py (real data) and dashboard/mock_data.py (fake data). Both must produce exactly this shape.",
+  "type": "object",
+  "required": ["cells"],
+  "properties": {
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "cell_id",
+          "gamma_up_est",
+          "gamma_down_est",
+          "pulse_gain_est",
+          "write_noise_std_est",
+          "read_noise_std_est",
+          "drift_rate_est"
+        ],
+        "properties": {
+          "cell_id": { "type": "integer", "description": "Index within the crossbar row" },
+          "gamma_up_est": { "type": "number", "description": "Estimated SET nonlinearity exponent" },
+          "gamma_down_est": { "type": "number", "description": "Estimated RESET nonlinearity exponent" },
+          "pulse_gain_est": { "type": "number", "description": "Estimated normalized conductance change per pulse" },
+          "write_noise_std_est": { "type": "number", "description": "Estimated cycle-to-cycle write noise" },
+          "read_noise_std_est": { "type": "number", "description": "Estimated read noise" },
+          "drift_rate_est": { "type": "number", "description": "Estimated conductance drift per unit virtual time" },
+          "g_min_phys": { "type": "number", "description": "Display-only physical lower bound" },
+          "g_max_phys": { "type": "number", "description": "Display-only physical upper bound" },
+          "n_pulses_used": { "type": "integer", "description": "How many characterization pulses produced this estimate" }
+        }
+      }
+    }
+  }
+}
