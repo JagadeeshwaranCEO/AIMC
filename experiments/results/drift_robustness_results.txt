@@ -1,0 +1,7 @@
+AIMC Drift Robustness Results
+==================================================
+
+Drift exponent (nu): 0.05
+Base accuracy: 11.00%
+Accuracy at hour 24 (No Tick): 9.00%
+Accuracy at hour 24 (With Tick): 2.00%

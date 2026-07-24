@@ -20,6 +20,7 @@ try:
     from scheduler import RuntimeScheduler
     from vcm import VirtualConductanceManager
     from isa import InstructionSet
+    from compensation_tick import CompensationTickCoprocessor, TickConfig
     HAS_RUNTIME = True
 except ImportError:
     HAS_RUNTIME = False
@@ -235,68 +236,106 @@ class AnalogTrainer:
     
     Handles:
     - Weight-to-conductance mapping after each update
-    - Drift compensation during training
+    - Drift compensation during training (with Compensation Tick)
     - Noise-aware gradient scaling
+    - Asymmetry correction via Tiki-Taka
     """
     
-    def __init__(self, model, lr=0.01, drift_compensation=True):
+    def __init__(self, model, lr=0.01, drift_compensation=True,
+                 use_compensation_tick=False, tick_config=None):
         self.model = model
         self.optimizer = torch.optim.SGD(model.parameters(), lr=lr)
         self.drift_compensation = drift_compensation
+        self.use_compensation_tick = use_compensation_tick and HAS_RUNTIME
         self.training_step = 0
+        
+        self.compensation_tick = None
+        if self.use_compensation_tick:
+            self.compensation_tick = CompensationTickCoprocessor(
+                config=tick_config or TickConfig()
+            )
+            self._initialize_tick_for_model()
     
-    def train_step(self, inputs, targets):
+    def _initialize_tick_for_model(self):
+        """Initialize Compensation Tick for all analog layers."""
+        if self.compensation_tick is None:
+            return
+        
+        for name, module in self.model.named_modules():
+            if isinstance(module, AnalogLinear) and module.crossbar is not None:
+                tile_id = hash(name) % 1000
+                self.compensation_tick.initialize_tile(tile_id, module.crossbar)
+                module._tick_tile_id = tile_id
+    
+    def train_step(self, inputs, targets, current_time=None):
         """
         Execute one training step on analog hardware.
         
         Returns:
             loss: Training loss
             accuracy: Batch accuracy
-            metrics: Analog-specific metrics
+            metrics: Analog-specific metrics including Compensation Tick data
         """
         self.model.train()
         
-        # Forward pass (runs on analog crossbar)
+        if self.use_compensation_tick and current_time is not None:
+            self._apply_compensation_tick(current_time)
+        
         outputs = self.model(inputs)
         loss = F.cross_entropy(outputs, targets)
         
-        # Backward pass (gradients through analog non-idealities)
         self.optimizer.zero_grad()
         loss.backward()
         
-        # Clip gradients (important for analog stability)
         torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0)
         
-        # Update weights
         self.optimizer.step()
         
-        # Sync new weights to crossbars
         self.model.sync_all_weights()
         
-        # Drift compensation
-        if self.drift_compensation and self.training_step % 10 == 0:
-            self._compensate_drift()
+        if self.drift_compensation and not self.use_compensation_tick:
+            if self.training_step % 10 == 0:
+                self._compensate_drift()
         
         self.training_step += 1
         
-        # Calculate accuracy
         _, predicted = torch.max(outputs, 1)
         accuracy = (predicted == targets).float().mean()
         
-        # Analog metrics
         metrics = {
             "loss": loss.item(),
             "accuracy": accuracy.item(),
             "training_step": self.training_step,
+            "compensation_tick_active": self.use_compensation_tick,
         }
         
+        if self.use_compensation_tick and self.compensation_tick:
+            metrics["tick_count"] = self.compensation_tick.total_ticks
+            metrics["probe_reads"] = self.compensation_tick.total_probe_reads
+        
         return loss.item(), accuracy.item(), metrics
+    
+    def _apply_compensation_tick(self, current_time):
+        """Apply Compensation Tick to all analog layers."""
+        if self.compensation_tick is None:
+            return
+        
+        for module in self.model.modules():
+            if isinstance(module, AnalogLinear) and module.crossbar is not None:
+                tile_id = getattr(module, '_tick_tile_id', None)
+                if tile_id is not None and self.compensation_tick.should_tick(tile_id, current_time):
+                    self.compensation_tick.tick(tile_id, module.crossbar, current_time)
+    
+    def get_tick_report(self):
+        """Get Compensation Tick efficiency report."""
+        if self.compensation_tick is None:
+            return None
+        return self.compensation_tick.get_efficiency_report()
     
     def _compensate_drift(self):
         """Compensate for conductance drift across all crossbars."""
         for module in self.model.modules():
             if isinstance(module, AnalogLinear) and module.crossbar is not None:
-                # Refresh crossbar (compensate drift)
                 module.crossbar.step_time(dt=0.1)
 
 

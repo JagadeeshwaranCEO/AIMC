@@ -1,0 +1,7 @@
+AIMC Stabilization Benchmark Results
+==================================================
+
+Final Test Accuracy:
+  Digital Baseline: 0.00%
+  Analog (No Comp): 7.00%
+  Analog + Tick: 3.00%

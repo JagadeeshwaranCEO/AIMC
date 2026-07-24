@@ -19,6 +19,10 @@ class OpCode(Enum):
     CALIBRATE_TILE = auto()       # Run calibration sequence
     REFRESH_TILE = auto()         # Drift compensation refresh
     SYNC_TILE = auto()            # Synchronize tile state
+    TICK_PROBE = auto()           # Sparse probe read for Compensation Tick
+    TILE_COMPENSATE = auto()      # Apply per-tile correction from Tick
+    KALMAN_UPDATE = auto()        # Update Kalman filter with probe data
+    TIKI_TAKA_CORRECT = auto()    # Asymmetry correction
 
 
 @dataclass
@@ -110,6 +114,41 @@ class InstructionSet:
     @staticmethod
     def sync(tile_id: int) -> Instruction:
         return Instruction(OpCode.SYNC_TILE, tile_id)
+    
+    @staticmethod
+    def tick_probe(tile_id: int, probe_indices) -> Instruction:
+        """Sparse probe read for Compensation Tick."""
+        return Instruction(
+            OpCode.TICK_PROBE,
+            tile_id,
+            {"probe_indices": probe_indices}
+        )
+    
+    @staticmethod
+    def tile_compensate(tile_id: int, scale: float, offset: float) -> Instruction:
+        """Apply per-tile correction from Compensation Tick."""
+        return Instruction(
+            OpCode.TILE_COMPENSATE,
+            tile_id,
+            {"scale": scale, "offset": offset}
+        )
+    
+    @staticmethod
+    def kalman_update(tile_id: int, measured_G: float) -> Instruction:
+        """Update Kalman filter with probe data."""
+        return Instruction(
+            OpCode.KALMAN_UPDATE,
+            tile_id,
+            {"measured_G": measured_G}
+        )
+    
+    @staticmethod
+    def tiki_taka_correct(tile_id: int) -> Instruction:
+        """Apply Tiki-Taka asymmetry correction."""
+        return Instruction(
+            OpCode.TIKI_TAKA_CORRECT,
+            tile_id
+        )
 
 
 if __name__ == "__main__":

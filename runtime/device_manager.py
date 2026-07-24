@@ -24,6 +24,14 @@ class DeviceManager:
                 "operation_count": 0,
                 "last_calibration": 0.0,
                 "drift_accumulated": 0.0,
+                "drift_exponent": 0.01,
+                "last_tick_time": 0.0,
+                "tick_count": 0,
+                "correction_scale": 1.0,
+                "correction_offset": 0.0,
+                "symmetry_point": 0.5,
+                "gamma_up": 1.0,
+                "gamma_down": 1.0,
             }
             for i in range(total_tiles)
         }
@@ -135,6 +143,37 @@ class DeviceManager:
         for info in self.tiles.values():
             info["crossbar"].step_time(dt)
             info["drift_accumulated"] += dt
+
+    def update_drift_state(self, tile_id: int, drift_exponent: float,
+                           correction_scale: float, correction_offset: float):
+        """
+        Update drift state for a tile from Compensation Tick.
+        """
+        if tile_id in self.tiles:
+            self.tiles[tile_id]["drift_exponent"] = drift_exponent
+            self.tiles[tile_id]["correction_scale"] = correction_scale
+            self.tiles[tile_id]["correction_offset"] = correction_offset
+            self.tiles[tile_id]["last_tick_time"] = self.current_time if hasattr(self, 'current_time') else 0.0
+            self.tiles[tile_id]["tick_count"] += 1
+
+    def record_tick(self, tile_id: int):
+        """Record that a Compensation Tick was executed on a tile."""
+        if tile_id in self.tiles:
+            self.tiles[tile_id]["tick_count"] += 1
+
+    def get_drift_summary(self) -> Dict[int, Dict]:
+        """Get drift state summary for all tiles."""
+        return {
+            tile_id: {
+                "drift_exponent": info["drift_exponent"],
+                "correction_scale": info["correction_scale"],
+                "correction_offset": info["correction_offset"],
+                "tick_count": info["tick_count"],
+                "drift_accumulated": info["drift_accumulated"],
+            }
+            for tile_id, info in self.tiles.items()
+            if info["allocated"]
+        }
 
 
 if __name__ == "__main__":

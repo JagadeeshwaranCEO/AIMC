@@ -24,6 +24,9 @@ class RuntimeScheduler:
         # Maintenance thresholds
         self.drift_threshold = 50.0  # Time before refresh needed
         self.calibration_interval = 100.0  # Time between calibrations
+        
+        # Compensation Tick integration
+        self.compensation_tick = None  # Set externally
 
     def submit(self, instruction: Instruction):
         """Add a single instruction to the queue."""
@@ -106,6 +109,28 @@ class RuntimeScheduler:
             # Synchronize tile state
             result = True
             
+        elif instr.opcode == OpCode.TICK_PROBE:
+            # Sparse probe read for Compensation Tick
+            probe_indices = instr.payload.get("probe_indices", [])
+            result = [tile.grid[r][c].read(add_noise=True) for r, c in probe_indices]
+            self.device_mgr.record_operation(instr.tile_id)
+            
+        elif instr.opcode == OpCode.TILE_COMPENSATE:
+            # Apply per-tile correction
+            scale = instr.payload.get("scale", 1.0)
+            offset = instr.payload.get("offset", 0.0)
+            self.device_mgr.tiles[instr.tile_id]["correction_scale"] = scale
+            self.device_mgr.tiles[instr.tile_id]["correction_offset"] = offset
+            result = True
+            
+        elif instr.opcode == OpCode.KALMAN_UPDATE:
+            # Update Kalman filter (handled by compensation_tick module)
+            result = True
+            
+        elif instr.opcode == OpCode.TIKI_TAKA_CORRECT:
+            # Apply Tiki-Taka asymmetry correction (handled by compensation_tick)
+            result = True
+            
         else:
             raise ValueError(f"Unknown opcode: {instr.opcode}")
         
@@ -128,21 +153,28 @@ class RuntimeScheduler:
         return self.execute_all()
 
     def inject_maintenance(self):
-        """Inject maintenance operations (drift refresh, calibration) based on thresholds."""
+        """Inject maintenance operations using Compensation Tick when available."""
         current_time = self.current_time
         
-        # Check each tile for maintenance needs
         for tile_id in self.device_mgr.allocated_tiles():
             tile_info = self.device_mgr.get_tile_info(tile_id)
             
-            # Check if drift refresh is needed
-            if tile_info["drift_accumulated"] > self.drift_threshold:
-                self.submit(InstructionSet.refresh(tile_id))
-            
-            # Check if calibration is needed
-            if current_time - tile_info["last_calibration"] > self.calibration_interval:
-                self.submit(InstructionSet.calibrate(tile_id))
-                self.device_mgr.tiles[tile_id]["last_calibration"] = current_time
+            if self.compensation_tick and self.compensation_tick.should_tick(tile_id, current_time):
+                tile = self.device_mgr.get_tile(tile_id)
+                result = self.compensation_tick.tick(tile_id, tile, current_time)
+                
+                scale = result.correction_scale
+                offset = result.correction_offset
+                self.tiles[tile_id]["correction_scale"] = scale
+                self.tiles[tile_id]["correction_offset"] = offset
+                
+            else:
+                if tile_info["drift_accumulated"] > self.drift_threshold:
+                    self.submit(InstructionSet.refresh(tile_id))
+                
+                if current_time - tile_info["last_calibration"] > self.calibration_interval:
+                    self.submit(InstructionSet.calibrate(tile_id))
+                    self.device_mgr.tiles[tile_id]["last_calibration"] = current_time
 
     def advance_time(self, dt: float):
         """Advance simulation time and trigger maintenance if needed."""

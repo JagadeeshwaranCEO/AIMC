@@ -16,6 +16,7 @@ g_min_phys / g_max_phys only exist for human-readable display.
 
 import math
 import random
+import numpy as np
 
 
 class AnalogCell:
@@ -67,6 +68,32 @@ class AnalogCell:
         self.t += dt
         decay = math.exp(-dt / self.drift_tau)
         self.g_norm = self._clip(self.drift_baseline + (self.g_norm - self.drift_baseline) * decay)
+
+    def step_time_power_law(self, dt, nu=None):
+        """
+        Apply power-law drift: G(t) = G0 * ((t0+dt)/t0)^(-nu)
+
+        This models PCM and other devices that show log-time drift.
+        Power-law drift is more realistic than exponential decay for
+        many analog memory technologies.
+
+        Args:
+            dt: Time increment
+            nu: Drift exponent (if None, use a default based on cell properties)
+        """
+        if nu is None:
+            nu = 0.01
+
+        if self.t <= 0 or dt <= 0:
+            self.t += dt
+            return
+
+        t_ratio = (self.t + dt) / self.t
+        if t_ratio > 1.0:
+            decay = t_ratio ** (-nu)
+            self.g_norm = self._clip(self.g_norm * decay)
+
+        self.t += dt
 
     def read(self, add_noise=True):
         val = self.g_norm
@@ -171,6 +198,70 @@ class AnalogCrossbar2D:
         for row in self.grid:
             for cell in row:
                 cell.step_time(dt)
+
+    def step_time_power_law(self, dt, nu_per_cell=None):
+        """
+        Apply power-law drift to all cells.
+
+        Args:
+            dt: Time increment
+            nu_per_cell: Optional 2D array of drift exponents per cell.
+                        If None, uses default nu=0.01 for all cells.
+        """
+        for r in range(self.rows):
+            for c in range(self.cols):
+                nu = nu_per_cell[r][c] if nu_per_cell else 0.01
+                self.grid[r][c].step_time_power_law(dt, nu)
+
+    def read_sparse(self, probe_indices, add_noise=True):
+        """
+        Read only specific cells (sparse probe read).
+
+        This is the key operation for the Compensation Tick -
+        instead of reading all M*N cells, we read only the probe subset.
+
+        Args:
+            probe_indices: List of (row, col) tuples to read
+            add_noise: Whether to add read noise
+
+        Returns:
+            List of (row, col, conductance) tuples
+        """
+        return [
+            (r, c, self.grid[r][c].read(add_noise=add_noise))
+            for r, c in probe_indices
+        ]
+
+    def read_probe_set(self, probe_indices, add_noise=True):
+        """
+        Read probe cells and return flat array of readings.
+
+        Args:
+            probe_indices: List of (row, col) tuples to read
+            add_noise: Whether to add read noise
+
+        Returns:
+            Array of conductance readings
+        """
+        return np.array([
+            self.grid[r][c].read(add_noise=add_noise)
+            for r, c in probe_indices
+        ])
+
+    def get_probe_targets(self, probe_indices):
+        """
+        Get target (ideal) conductances for probe cells.
+
+        Args:
+            probe_indices: List of (row, col) tuples
+
+        Returns:
+            Array of target conductances
+        """
+        return np.array([
+            self.grid[r][c].g_norm
+            for r, c in probe_indices
+        ])
 
 
 if __name__ == "__main__":
