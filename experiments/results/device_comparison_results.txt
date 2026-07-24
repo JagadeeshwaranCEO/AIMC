@@ -1,0 +1,22 @@
+AIMC Device Comparison Results
+==================================================
+
+Training Accuracy:
+  RRAM: 98.56%
+  PCM: 99.76%
+  FeFET: 99.49%
+
+Energy (pJ per 64x64 VMM):
+  RRAM: 2048.0
+  PCM: 8192.0
+  FeFET: 41.0
+
+Speed (ns):
+  RRAM: 50
+  PCM: 100
+  FeFET: 5
+
+Drift (% after 50 steps):
+  RRAM: 3.13
+  PCM: 7.82
+  FeFET: 0.78
