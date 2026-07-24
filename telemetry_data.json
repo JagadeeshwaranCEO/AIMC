@@ -1,0 +1,5017 @@
+{
+  "metrics": {
+    "total_operations": 153,
+    "total_mvm": 150,
+    "total_programs": 3,
+    "total_refreshes": 29,
+    "total_calibrations": 0,
+    "total_tiles_allocated": 3,
+    "peak_tile_usage": 3,
+    "total_drift_compensation": 29
+  },
+  "timeseries": {
+    "timestamps": [],
+    "tile_usage": [],
+    "queue_depth": [],
+    "avg_health": [],
+    "operations_per_step": []
+  },
+  "tile_metrics": {
+    "0": {
+      "total_operations": 167,
+      "mvm_count": 50,
+      "program_count": 1,
+      "refresh_count": 10,
+      "health_history": [],
+      "drift_accumulated": 0.0
+    },
+    "1": {
+      "total_operations": 163,
+      "mvm_count": 50,
+      "program_count": 1,
+      "refresh_count": 6,
+      "health_history": [],
+      "drift_accumulated": 0.0
+    },
+    "2": {
+      "total_operations": 170,
+      "mvm_count": 50,
+      "program_count": 1,
+      "refresh_count": 13,
+      "health_history": [],
+      "drift_accumulated": 0.0
+    }
+  },
+  "total_events": 500,
+  "runtime_duration": 1.5701651573181152,
+  "events": [
+    {
+      "timestamp": 1.4480438232421875,
+      "event_type": "ALLOC",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dims": "784x128"
+      }
+    },
+    {
+      "timestamp": 1.448075771331787,
+      "event_type": "ALLOC",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dims": "128x64"
+      }
+    },
+    {
+      "timestamp": 1.4480867385864258,
+      "event_type": "ALLOC",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dims": "64x10"
+      }
+    },
+    {
+      "timestamp": 1.4540538787841797,
+      "event_type": "PROGRAM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "weight_range": "[-0.226, 0.226]",
+        "conductance_range": "[0.000, 1.000]"
+      }
+    },
+    {
+      "timestamp": 1.4545049667358398,
+      "event_type": "PROGRAM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "weight_range": "[-0.425, 0.525]",
+        "conductance_range": "[0.000, 1.000]"
+      }
+    },
+    {
+      "timestamp": 1.4545748233795166,
+      "event_type": "PROGRAM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "weight_range": "[-0.597, 0.606]",
+        "conductance_range": "[0.000, 1.000]"
+      }
+    },
+    {
+      "timestamp": 1.4566810131072998,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "1.833",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.456908941268921,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4571170806884766,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4573230743408203,
+      "event_type": "REFRESH",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.4576480388641357,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.458669900894165,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "1.005",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4590959548950195,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4594628810882568,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4596638679504395,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4598658084869385,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.460752010345459,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.879",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4611527919769287,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.4615051746368408,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.4618568420410156,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.4622080326080322,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.4625868797302246,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.337",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4627909660339355,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4629909992218018,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4631900787353516,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4635767936706543,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.383",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4639251232147217,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4642651081085205,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4646079540252686,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4650869369506836,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.474",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4656329154968262,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.505",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.465836763381958,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4661741256713867,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4664878845214844,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4667890071868896,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.4674608707427979,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.667",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.467764139175415,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.468064785003662,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.46828293800354,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4688117504119873,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.525",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4692409038543701,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.402",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4695398807525635,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.469836950302124,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4701330661773682,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4705660343170166,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.429",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4708638191223145,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.471114158630371,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4713139533996582,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4715979099273682,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.280",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.47226881980896,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.656",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.472538948059082,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4728038311004639,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4730689525604248,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4736769199371338,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.605",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4739339351654053,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.474133014678955,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4743318557739258,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4748890399932861,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.554",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4752657413482666,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.357",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4755349159240723,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4757981300354004,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4760611057281494,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.476428747177124,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.363",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4766957759857178,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4769260883331299,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4771270751953125,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4774301052093506,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.300",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4780299663543701,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.581",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.478287935256958,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.478524923324585,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.478762149810791,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4792978763580322,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.533",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4795358180999756,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.479762077331543,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4799599647521973,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4804518222808838,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.490",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4807848930358887,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.316",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4810259342193604,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4812629222869873,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4814989566802979,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4818220138549805,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.320",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4820597171783447,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4822957515716553,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4825317859649658,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4828171730041504,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.281",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4833009243011475,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.470",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4835400581359863,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4837770462036133,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4840128421783447,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4844858646392822,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.470",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.48465895652771,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4848289489746094,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4849989414215088,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4853808879852295,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.380",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4856579303741455,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.265",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.485860824584961,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4860608577728271,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4862737655639648,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4865717887878418,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.296",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4867889881134033,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.487004041671753,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.487217903137207,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4875109195709229,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.289",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4880001544952393,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.475",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.488219976425171,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4884328842163086,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4886319637298584,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4890761375427246,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.442",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4892780780792236,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4894769191741943,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.489675760269165,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4898769855499268,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.4903178215026855,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.438",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.490522861480713,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.4907219409942627,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.490920066833496,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.4912090301513672,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.279",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4914119243621826,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.491609811782837,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4918088912963867,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4920940399169922,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.282",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4922919273376465,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4924890995025635,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4926879405975342,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4929850101470947,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.294",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4934568405151367,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.458",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.493664026260376,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4938671588897705,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.494070053100586,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4945249557495117,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.452",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4947268962860107,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4949238300323486,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4951229095458984,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4955878257751465,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.462",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4958839416503906,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.281",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4960830211639404,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4962718486785889,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.496467113494873,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4967329502105713,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.261",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4969229698181152,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4971089363098145,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4972939491271973,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.497572898864746,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.277",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4980218410491943,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.433",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.4982140064239502,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.498403787612915,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4985928535461426,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.499047040939331,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.450",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.4992389678955078,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4994299411773682,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4996178150177002,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.4998087882995605,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5002670288085938,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.455",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5005640983581543,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.279",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.500756025314331,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.500946044921875,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5011379718780518,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5013298988342285,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5016090869903564,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.276",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5017979145050049,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5019819736480713,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5021588802337646,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.50242280960083,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.262",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5029020309448242,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.457",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5030889511108398,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5032730102539062,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5034561157226562,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.503950834274292,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.492",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.504133939743042,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5043139457702637,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5044958591461182,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5050199031829834,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.521",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5053489208221436,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.305",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5055360794067383,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5057218074798584,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5059070587158203,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5060911178588867,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5064048767089844,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.312",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.506593942642212,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5067758560180664,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.506957769393921,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5071399211883545,
+      "event_type": "REFRESH",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.507321834564209,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.50764799118042,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.322",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.508131980895996,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.461",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5083091259002686,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.508486032485962,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5086610317230225,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5091040134429932,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.441",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5092799663543701,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5094537734985352,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.509626865386963,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5097999572753906,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5102839469909668,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.482",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5106158256530762,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.307",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5107898712158203,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5109620094299316,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5111329555511475,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5114021301269531,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.267",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5115747451782227,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5117459297180176,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5119199752807617,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5121839046478271,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.261",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5126500129699707,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.448",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.512822151184082,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5129947662353516,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.513164758682251,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5133368968963623,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5137648582458496,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.425",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5139317512512207,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5140948295593262,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5142579078674316,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.51466703414917,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.406",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5148398876190186,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5150070190429688,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5151729583740234,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5153398513793945,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5155699253082275,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.223",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5157368183135986,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.515899896621704,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5160648822784424,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5162928104400635,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.225",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5164589881896973,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5166230201721191,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.516787052154541,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.517012119293213,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.222",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5174009799957275,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.377",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5175690650939941,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5177350044250488,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5179009437561035,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.518273115158081,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.369",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5184390544891357,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5186030864715576,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5187668800354004,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5191359519958496,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.367",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5193660259246826,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.220",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5195348262786865,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.519700050354004,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.519862174987793,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5200779438018799,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.214",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.520237922668457,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5203969478607178,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.520555019378662,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.520770788192749,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.215",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5211360454559326,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.354",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5212969779968262,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.521456003189087,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.521615982055664,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5219800472259521,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.362",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5221409797668457,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5223000049591064,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5224859714508057,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5228817462921143,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.389",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5231430530548096,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.243",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5233039855957031,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5234639644622803,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.523625135421753,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5237860679626465,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5240919589996338,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.304",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5242509841918945,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5244100093841553,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5245661735534668,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5247230529785156,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5249600410461426,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.235",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5253441333770752,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.371",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5255041122436523,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5256609916687012,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5258169174194336,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5259730815887451,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.526352882385254,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.379",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.52650785446167,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5266618728637695,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5268161296844482,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5269770622253418,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.527338981628418,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.359",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.527580976486206,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.228",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5277369022369385,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5278947353363037,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5280508995056152,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5282788276672363,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.225",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5284340381622314,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5285871028900146,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5287418365478516,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.528968095779419,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.225",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5293469429016113,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.365",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5295047760009766,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5296618938446045,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.529817819595337,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.530181884765625,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.363",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5303409099578857,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5305018424987793,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.530669927597046,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5310637950897217,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.378",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5313279628753662,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.226",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5314788818359375,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5316259860992432,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.531775951385498,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5320148468017578,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.235",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5321691036224365,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.532318115234375,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5324668884277344,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5326848030090332,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.213",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5330638885498047,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.354",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5332119464874268,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.533371925354004,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5335299968719482,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.533890962600708,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.358",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5340428352355957,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5341918468475342,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.534343957901001,
+      "event_type": "REFRESH",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.534492015838623,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5348539352416992,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.359",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.53501296043396,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5351638793945312,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5353119373321533,
+      "event_type": "REFRESH",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5354588031768799,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.535691738128662,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.221",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.535841941833496,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.535991907119751,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5361418724060059,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5363609790802002,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.217",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5365138053894043,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5366637706756592,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5368127822875977,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5370330810546875,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.218",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5374829769134521,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.435",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5376348495483398,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.537790060043335,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5379400253295898,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5383870601654053,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.444",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5385549068450928,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5387048721313477,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5388529300689697,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5392999649047852,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.445",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5395519733428955,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.234",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5397000312805176,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5398480892181396,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5399949550628662,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5402240753173828,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.227",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5403721332550049,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5405189990997314,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5406689643859863,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5408868789672852,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.216",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5412628650665283,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.364",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.541409969329834,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5415561199188232,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5417020320892334,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5420498847961426,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.346",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5421969890594482,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.542341947555542,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5424888134002686,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5428340435028076,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.343",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5430479049682617,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.202",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5431950092315674,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.543339729309082,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5434870719909668,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5436937808990479,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.205",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5438408851623535,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5439860820770264,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.544130802154541,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.544334888458252,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.202",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5446867942810059,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.341",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5448331832885742,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5449779033660889,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5451228618621826,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5454621315002441,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.337",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5456089973449707,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5457539558410645,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5458979606628418,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5460460186004639,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5463838577270508,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.336",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5465989112854004,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.204",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5467469692230225,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5468928813934326,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5470390319824219,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5472431182861328,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.201",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5473899841308594,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.547536849975586,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5476839542388916,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.547888994216919,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.203",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.548233985900879,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.336",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5483839511871338,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5485279560089111,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.548673152923584,
+      "event_type": "REFRESH",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5488178730010986,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5491538047790527,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.334",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5493028163909912,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5494580268859863,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.54960298538208,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5499439239501953,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.339",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.550156831741333,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.202",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5503041744232178,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.550447940826416,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5505931377410889,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.550797939300537,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.204",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5509440898895264,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5510890483856201,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5512330532073975,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.551435947418213,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.201",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5517809391021729,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.332",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.551928997039795,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5520751476287842,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5522220134735107,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5523779392242432,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5527188777923584,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.337",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.552865743637085,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5530109405517578,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5531558990478516,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5533010959625244,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.553642988204956,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.341",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5537939071655273,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5539391040802002,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5540838241577148,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 20.0,
+        "drift_accumulated": 0.2
+      }
+    },
+    {
+      "timestamp": 1.5542941093444824,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.204",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.554440975189209,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5545859336853027,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.55472993850708,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5548739433288574,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5550768375396729,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.202",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5552279949188232,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5553717613220215,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5555169582366943,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.555722951889038,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.204",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5560741424560547,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.342",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5562219619750977,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5563788414001465,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5565247535705566,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5568630695343018,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.336",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5570158958435059,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5571630001068115,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5573210716247559,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5576648712158203,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.342",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.557887077331543,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.211",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.558039903640747,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5581889152526855,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5583350658416748,
+      "event_type": "REFRESH",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5584800243377686,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.558682918548584,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.201",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5588288307189941,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.558974027633667,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5591189861297607,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.559262990951538,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5594661235809326,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.201",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5598089694976807,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.333",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5599560737609863,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5601108074188232,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.560256004333496,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5605928897857666,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.335",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5607388019561768,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.560884952545166,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5610320568084717,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5611748695373535,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5615119934082031,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.335",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.561722993850708,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.202",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5618689060211182,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5620129108428955,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5621569156646729,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5623619556427002,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.203",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.562514066696167,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5626599788665771,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5628039836883545,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.563007116317749,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.201",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5633540153503418,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.337",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.563499927520752,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5636448860168457,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5637898445129395,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5641307830810547,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.339",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5642781257629395,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5644230842590332,
+      "event_type": "REFRESH",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.5645689964294434,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5647130012512207,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5648589134216309,
+      "event_type": "REFRESH",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "drift_compensated": true
+      }
+    },
+    {
+      "timestamp": 1.565199851989746,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.340",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5654089450836182,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.198",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.565566062927246,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.565713882446289,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5658597946166992,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5660607814788818,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.199",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5662059783935547,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5663487911224365,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.566493034362793,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5667040348052979,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.208",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5670709609985352,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.356",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5672168731689453,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.567361831665039,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.567507028579712,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5678658485412598,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.357",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.56801176071167,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5681560039520264,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5682997703552246,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.568652868270874,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.350",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5688610076904297,
+      "event_type": "MVM",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "latency_ms": "0.199",
+        "input_shape": "(784,)"
+      }
+    },
+    {
+      "timestamp": 1.5690069198608398,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5691499710083008,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5692939758300781,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5694959163665771,
+      "event_type": "MVM",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "latency_ms": "0.199",
+        "input_shape": "(32,)"
+      }
+    },
+    {
+      "timestamp": 1.5696449279785156,
+      "event_type": "DRIFT",
+      "tile_id": 0,
+      "payload": {
+        "layer": "layer1",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5697901248931885,
+      "event_type": "DRIFT",
+      "tile_id": 1,
+      "payload": {
+        "layer": "layer2",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.5699360370635986,
+      "event_type": "DRIFT",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "dt": 5.0,
+        "drift_accumulated": 0.05
+      }
+    },
+    {
+      "timestamp": 1.570138931274414,
+      "event_type": "MVM",
+      "tile_id": 2,
+      "payload": {
+        "layer": "layer3",
+        "latency_ms": "0.201",
+        "input_shape": "(32,)"
+      }
+    }
+  ]
+}
