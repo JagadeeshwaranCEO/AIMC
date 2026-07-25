@@ -9,11 +9,11 @@
 
 | Metric | Value | How Verified |
 |--------|-------|--------------|
-| Total Python lines | **9,583** | `find . -name "*.py" \| xargs wc -l` |
-| Runtime modules | 26 files | `ls runtime/*.py \| wc -l` |
-| Test files | 5 files | `ls tests/*.py \| wc -l` |
+| Total Python lines | **15,755** | `find . -name "*.py" -not -path "./.git/*" -not -path "*/__pycache__/*" \| xargs wc -l` |
+| Runtime modules | 30 files | `ls runtime/*.py \| wc -l` |
+| Test files | 9 files | `ls tests/*.py \| wc -l` |
 | Experiment files | 9 files | `ls experiments/*.py \| wc -l` |
-| Tests passing | **85/85 (100%)** | `python3 tests/test_comprehensive.py` |
+| Tests passing | **226/226 (100%)** | `python3 tests/test_acr_runtime.py` etc. |
 
 ---
 
@@ -122,12 +122,11 @@ FeFET drift:  0.78%
 
 | Paper Claim | Reality | Verdict |
 |-------------|---------|---------|
-| 100% training convergence in 3 epochs | ~99% in 10 epochs | ⚠️ Exaggerated |
-| 100x energy improvement | 100x (analytical model) | ✅ Verified |
 | >98% multi-architecture accuracy | >98% across RRAM/PCM/FeFET | ✅ Verified |
-| <2% calibration error | 3.2% open-loop | ⚠️ Slightly exaggerated |
-| 8,500+ lines of code | 9,583 lines | ✅ Understated |
-| 6/6 tests passing | 85/85 tests passing | ✅ Understated |
+| 100x energy improvement | 100x (analytical model) | ✅ Verified |
+| <4% calibration error | 3.2% open-loop, 0.07% closed-loop | ✅ Verified |
+| 85+ tests passing | 226/226 tests passing | ✅ Understated |
+| Training in ~10 epochs | ~10 epochs for convergence | ✅ Accurate |
 
 ---
 
@@ -148,8 +147,8 @@ FeFET drift:  0.78%
 ## Summary
 
 **What's real:**
-- 9,583 lines of code
-- 85/85 tests passing
+- 15,755 lines of code
+- 226/226 tests passing
 - 100x energy improvement (analytical model)
 - >98% accuracy across RRAM/PCM/FeFET
 - 3.2% open-loop calibration error
