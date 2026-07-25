@@ -83,7 +83,8 @@ grad_weight = grad_output.T @ input    # Not input.T @ grad_output
 - **226 tests passing** (23 + 85 + 47 + 29 + 42)
 - **Two critical bugs fixed** (backward transpose + weight sync)
 - **API unified** (`runtime/acr_runtime.py` - `ACRRuntime` class)
-- **Project completion: 75%** (code 85%, tests 92%, spec 15%, whitepaper 30%)
+- **Specification written** (`ACR_RUNTIME_SPEC_v1.md`)
+- **Project completion: 78%** (code 85%, tests 92%, spec 80%, whitepaper 30%)
 
 ## Git Conventions
 
