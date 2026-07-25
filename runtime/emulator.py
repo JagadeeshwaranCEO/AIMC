@@ -167,6 +167,30 @@ class AnalogCrossbar2D:
         """Returns normalized conductance matrix G as a 2D list [rows][cols]."""
         return [[cell.read(add_noise=add_noise) for cell in row] for row in self.grid]
 
+    def program_conductances(self, g_matrix):
+        """
+        Write conductance values into all cells.
+
+        Args:
+            g_matrix: 2D numpy array of normalized conductances in [0, 1]
+        """
+        for i in range(min(self.rows, g_matrix.shape[0])):
+            for j in range(min(self.cols, g_matrix.shape[1])):
+                self.grid[i][j].g_norm = float(g_matrix[i, j])
+
+    def read_conductances(self):
+        """
+        Read current conductance state as numpy matrix.
+
+        Returns:
+            2D numpy array of normalized conductances
+        """
+        g = np.zeros((self.rows, self.cols))
+        for i in range(self.rows):
+            for j in range(self.cols):
+                g[i, j] = self.grid[i][j].g_norm
+        return g
+
 
     def forward_vmm(self, x_vector, add_noise=True):
         """

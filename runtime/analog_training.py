@@ -70,33 +70,34 @@ class AnalogLinearFunction(Function):
     def backward(ctx, grad_output):
         """
         Backward pass: Compute gradients through analog non-idealities.
-        
+
         The analog crossbar introduces:
         - Read noise (stochastic gradient perturbation)
         - Conductance drift (weight decay effect)
         - Nonlinear VMM (gradient scaling)
-        
+
         These actually act as REGULARIZATION during training!
         """
         input, weight = ctx.saved_tensors
-        
+
         # Get crossbar properties for gradient computation
         crossbar = ctx.crossbar_ref
-        
+
         # Read the actual conductance matrix (with noise if enabled)
         g_matrix = crossbar.read_matrix(add_noise=ctx.add_noise)
         g_tensor = torch.tensor(g_matrix, dtype=torch.float32)
-        
-        # Gradient w.r.t. input: grad_input = grad_output @ weight_analog
-        # This accounts for analog noise in the weight matrix
-        grad_input = grad_output @ g_tensor
-        
-        # Gradient w.r.t. weight: grad_weight = grad_output.T @ input
-        # Add analog noise as implicit regularization
-        noise_scale = 0.01  # Analog noise level
-        analog_noise = torch.randn_like(weight) * noise_scale
-        grad_weight = grad_output.T @ input + analog_noise
-        
+
+        # BUG FIX 1: Transpose g_tensor for correct gradient shape
+        # Forward: y = x @ G   where G shape is (in, out)
+        # Backward: grad_input = grad_output @ G.T
+        #   (B, out) @ (out, in) = (B, in) ✓
+        grad_input = grad_output @ g_tensor.T
+
+        # Gradient w.r.t. weight: weight shape is (out, in)
+        # grad_weight = grad_output.T @ input
+        #   (out, B) @ (B, in) = (out, in) ✓
+        grad_weight = grad_output.T @ input
+
         return grad_input, grad_weight, None, None
 
 
@@ -141,18 +142,15 @@ class AnalogLinear(nn.Module):
         """Sync PyTorch weights to analog crossbar conductances."""
         if self.crossbar is None or self.vcm is None:
             return
-        
+
         # Map weights to conductance
         w_np = self.weight.detach().cpu().numpy()
         g_conductance = self.vcm.scale_weights_to_conductance(w_np)
-        
-        # Program crossbar (in real hardware, this would pulse cells)
-        # For emulation, we'll re-initialize the crossbar
-        self.crossbar = AnalogCrossbar2D(
-            rows=self.in_features,
-            cols=self.out_features,
-            seed=int(g_conductance.sum() * 1000) % 10000
-        )
+
+        # BUG FIX 2: Actually write conductance values into cells
+        # Weight shape is (out, in), crossbar shape is (in, out)
+        # Need to transpose before programming
+        self.crossbar.program_conductances(g_conductance.T)
     
     def forward(self, x):
         """

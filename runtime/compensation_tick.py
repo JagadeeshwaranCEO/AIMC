@@ -21,8 +21,8 @@ from typing import Dict, List, Tuple, Optional, Any
 from dataclasses import dataclass, field
 import numpy as np
 
-from runtime.sparse_probe import ProbeSetManager, tile_linear_regression
-from runtime.kalman_filter import MultiTileKalmanManager
+from sparse_probe import ProbeSetManager, tile_linear_regression
+from kalman_filter import MultiTileKalmanManager
 
 
 @dataclass
