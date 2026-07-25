@@ -1,167 +1,126 @@
 <div align="center">
 
-# ⚡ AIMC — Analog In-Memory Computing Runtime
+# Analog Compute Runtime (ACR)
 
-**A hardware-agnostic runtime that virtualizes analog device physics, enabling reliable neural network execution across imperfect analog hardware.**
+**A hardware-agnostic runtime that enables AI software to execute on imperfect analog memory devices.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C.svg?style=flat-square&logo=pytorch&logoColor=white)](https://pytorch.org)
 [![Tests](https://img.shields.io/badge/Tests-6%2F6%20Passing-brightgreen.svg?style=flat-square)](tests/)
-[![Stars](https://img.shields.io/github/stars/JagadeeshwaranCEO/AIMC?style=flat-square&color=yellow)](https://github.com/JagadeeshwaranCEO/AIMC)
 
 </div>
 
 ---
 
-## 💡 The Problem
+## What This Is
 
-Analog in-memory computing (AIMC) chips promise **100x energy efficiency** for AI inference — but analog hardware is **noisy, drifting, and unreliable**. Every memristor cell behaves differently, conductances drift over time, and writes are stochastic. Existing approaches force ML engineers to become hardware experts.
+Analog in-memory computing (AIMC) performs matrix-vector multiplication in a single physical step by applying voltages to a crossbar of programmable conductances. This is potentially **100x more energy-efficient** than digital MAC operations.
 
-## 🎯 Our Solution
+However, analog hardware faces persistent challenges:
+- **Device variability**: Every cell behaves differently
+- **Conductance drift**: Weights decay over time
+- **Asymmetric programming**: SET and RESET behave differently
+- **Read/write noise**: Stochastic operations
 
-AIMC provides a **hardware-agnostic software runtime** that abstracts unreliable analog memory into a reliable computing platform. Write standard PyTorch code — the runtime handles everything else.
+ACR provides a **unified software layer** that abstracts these device-specific behaviors, enabling AI frameworks to execute on analog hardware without requiring hardware expertise.
+
+---
+
+## Implemented
+
+These components are **working today** and can be demonstrated:
+
+### Core Runtime
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **Analog Cell Emulator** | Physical model of analog memory cells with device-to-device variation, cycle-to-cycle noise, asymmetric updates, and relaxation drift | `runtime/emulator.py` |
+| **2D Crossbar Engine** | M×N crossbar array with physical VMM using Kirchhoff's current law | `runtime/emulator.py` |
+| **Virtual Conductance Manager** | Maps weights to conductances using differential pairs (W = G⁺ - G⁻) | `runtime/vcm.py` |
+| **Instruction Set Architecture** | Hardware opcodes for any backend (ALLOC, PROGRAM, MVM, REFRESH) | `runtime/isa.py` |
+| **Runtime Scheduler** | Instruction queue management with drift maintenance injection | `runtime/scheduler.py` |
+| **Device Manager** | Crossbar tile allocation and health tracking | `runtime/device_manager.py` |
+
+### Training Support
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **PyTorch Bridge** | Custom autograd functions for analog execution | `runtime/torch_bridge.py` |
+| **Analog Training** | Backpropagation through analog non-idealities | `runtime/analog_training.py` |
+
+### Reliability Services
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **Fault Injection** | Stuck-at faults, conductance drift, sneak paths | `runtime/fault_injection.py` |
+| **Adaptive Calibration** | Self-healing drift compensation | `runtime/adaptive_calibration.py` |
+
+### Runtime Health Monitor (Compensation Tick)
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **Sparse Probe Calibration** | Reads 5% of cells to estimate per-tile scale/offset | `runtime/sparse_probe.py` |
+| **Kalman Drift Tracker** | Tracks drift exponent per tile using Kalman filtering | `runtime/kalman_filter.py` |
+| **Asymmetry Correction** | Tiki-Taka algorithm with adaptive symmetry-point | `runtime/tiki_taka.py` |
+| **Adaptive Tick Scheduler** | Closed-loop scheduling based on drift rate | `runtime/tick_scheduler.py` |
+| **Coprocessor Orchestrator** | Coordinates all health monitoring services | `runtime/compensation_tick.py` |
+
+### Hardware Abstraction Layer
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **Device Interface** | Abstract base class for analog memory devices | `runtime/hal.py` |
+| **RRAM Model** | RRAM device with realistic parameters | `runtime/hal.py` |
+| **PCM Model** | PCM device with power-law drift | `runtime/hal.py` |
+| **FeFET Model** | FeFET device with low drift | `runtime/hal.py` |
+| **Device Factory** | Creates devices by type | `runtime/hal.py` |
+
+### Runtime Services
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **Analog Virtual Memory** | Logical-to-physical conductance mapping | `runtime/analog_virtual_memory.py` |
+| **Runtime Optimizer** | Intelligent decisions about updates, merges, refreshes | `runtime/optimizer.py` |
+
+### Validation
+
+| Component | Description | File |
+|-----------|-------------|------|
+| **Training Convergence Proof** | Demonstrates training works on analog hardware | `experiments/training_proof.py` |
+| **Device Comparison** | Compares RRAM, PCM, FeFET characteristics | `experiments/device_comparison.py` |
+| **Multi-Architecture Validation** | Same code works across device types | `experiments/device_comparison.py` |
+| **Integration Tests** | 6 tests validating runtime functionality | `tests/test_runtime.py` |
+
+---
+
+## Architecture
 
 ```
+AI Framework (PyTorch)
+        ↓
 ┌─────────────────────────────────────────────────────────┐
-│  PyTorch Model (nn.Linear)          ← User writes this  │
+│              Analog Compute Runtime (ACR)                │
 ├─────────────────────────────────────────────────────────┤
-│  AIMC Runtime                                           │
-│  ├── Virtual Conductance Manager    (W = G⁺ - G⁻)       │
-│  ├── Instruction Set Architecture   (LOAD, MVM, REFRESH)│
-│  ├── Runtime Scheduler              (Queue + Maintenance)│
-│  ├── Device Manager                 (Tile Allocation)    │
-│  ├── Adaptive Calibration           (Self-Healing)       │
-│  └── Fault Tolerance                (Redundant Cells)    │
+│  Runtime Scheduler    │  Analog Virtual Memory          │
+│  Device Profiler      │  Runtime Health Monitor         │
+│  Pulse Compiler       │  Runtime Optimizer              │
+│  Training Runtime     │  Telemetry                      │
 ├─────────────────────────────────────────────────────────┤
-│  Analog Crossbar Hardware          ← RRAM / PCM / FeFET │
+│        Hardware Abstraction Layer (HAL)                  │
 └─────────────────────────────────────────────────────────┘
+        ↓
+RRAM / PCM / FeFET / Future Devices
 ```
 
 ---
 
-## 🏗️ Architecture
+## Verified Results
 
-### Runtime Stack
+These results have been **experimentally validated**:
 
-```
-emulator.py              2D Crossbar with physical VMM (Kirchhoff's law)
-    │
-vcm.py                   Weight → Conductance mapping (differential pairs)
-    │
-isa.py                   Hardware instruction set (OPCODES)
-    │
-scheduler.py             Instruction queue + drift maintenance
-    │
-device_manager.py        Tile allocation + health tracking
-    │
-analog_training.py       Train models ON analog hardware
-    │
-fault_injection.py       Simulate & handle hardware failures
-    │
-adaptive_calibration.py  Self-healing drift compensation
-    │
-telemetry.py             Real-time metrics collection
-    │
-dashboard/               Streamlit visualization
-```
+### Training Convergence
 
-### Key Innovation: Differential Weight Mapping
-
-Analog cells can only store **positive** conductances. AIMC solves this with differential pairs:
-
-$$W = G^+ - G^-$$
-
-Negative weights use two cells — one positive, one inverted. The runtime handles this transparently. Your PyTorch code never knows.
-
----
-
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-git clone https://github.com/JagadeeshwaranCEO/AIMC.git
-cd AIMC
-pip install -r requirements.txt
-```
-
-### Run the Benchmark
-
-```bash
-# Execute MLP on analog crossbar with telemetry
-python runtime/benchmark.py
-
-# Compare digital vs analog performance
-python runtime/performance_benchmark.py
-```
-
-### Launch the Dashboard
-
-```bash
-streamlit run dashboard/app.py
-```
-
-### Run All Tests
-
-```bash
-python tests/test_runtime.py
-```
-
----
-
-## ⚡ Features
-
-| Feature | Description | Status |
-|---------|-------------|--------|
-| **2D Crossbar Engine** | Physical VMM with Kirchhoff's current law | ✅ Complete |
-| **Virtual Conductance Manager** | Negative weight mapping via differential pairs | ✅ Complete |
-| **Instruction Set Architecture** | Hardware opcodes for any backend | ✅ Complete |
-| **Runtime Scheduler** | Queue management + drift maintenance | ✅ Complete |
-| **Device Manager** | Tile allocation + health tracking | ✅ Complete |
-| **PyTorch Bridge** | Standard `nn.Linear` on analog hardware | ✅ Complete |
-| **Analog Training** | Backpropagation through analog non-idealities | ✅ Complete |
-| **Fault Injection** | Stuck-at faults, drift, sneak paths | ✅ Complete |
-| **Adaptive Calibration** | Self-healing drift compensation | ✅ Complete |
-| **Performance Benchmark** | Digital vs analog comparison (100x energy) | ✅ Complete |
-| **Real-time Telemetry** | 500+ events captured per benchmark | ✅ Complete |
-| **Streamlit Dashboard** | Live runtime visualization | ✅ Complete |
-
----
-
-## 📊 Performance
-
-### Digital vs Analog
-
-| Metric | Digital | AIMC Analog | Improvement |
-|--------|---------|-------------|-------------|
-| Energy per VMM | 16,384 pJ | 163.8 pJ | **100x** |
-| Latency (128×128) | 0.002 ms | 1.15 ms | Simulated* |
-| Area efficiency | 1x | 100x | **100x** |
-
-*\*Analog latency is simulated; real hardware achieves single-cycle VMM*
-
-### Benchmark Results (50 samples)
-
-```
-Total Operations:     153
-├── MVM Operations:   150  (Vector-Matrix Multiplications)
-├── Program Ops:        3  (Weight loading)
-├── Drift Compensations: 29 (Runtime maintenance)
-└── Peak Tile Usage:    3 tiles
-
-Average Latency:     2.22ms per inference
-Total Runtime:      111.22ms for 50 samples
-Telemetry Events:   500+ captured
-```
-
----
-
-## 🧠 Training Convergence Proof
-
-**PROVEN:** Neural networks can train on analog crossbar hardware with 100% accuracy.
-
-### Results
+Neural networks can train on analog crossbar hardware:
 
 ```
 Epoch | Digital | Analog
@@ -169,232 +128,157 @@ Epoch | Digital | Analog
 1     | 49.64%  | 30.36%
 2     | 94.64%  | 92.86%
 3     | 100%    | 100%
-4-20  | 100%    | 100%   ← CONVERGED!
+4-20  | 100%    | 100%   ← Converged
 ```
 
-### Key Findings
+### Multi-Architecture Support
 
-- ✓ Analog training **converges to 100% accuracy**
-- ✓ Convergence speed matches digital baseline (3 epochs)
-- ✓ Analog noise acts as **implicit regularization**
-- ✓ **100x energy efficiency** maintained during training
-- ✓ Same PyTorch API — zero code changes needed
+Same code works across device types:
 
-### Run the Experiment
+| Device | Final Accuracy | Speed | Energy | Drift |
+|--------|---------------|-------|--------|-------|
+| RRAM | 98.56% | 50 ns | 0.5 pJ | 3.13% |
+| PCM | 99.76% | 100 ns | 2.0 pJ | 7.82% |
+| FeFET | 99.49% | 5 ns | 0.01 pJ | 0.78% |
 
-```bash
-# Fast proof of concept
-python experiments/training_proof.py
+### Energy Efficiency
 
-# Full MNIST training
-python experiments/training_convergence.py
-```
-
-### Generate Plots
-
-```bash
-# Convergence plot saved to:
-experiments/results/convergence_plot.png
-```
+| Operation | Digital | Analog | Improvement |
+|-----------|---------|--------|-------------|
+| VMM (128×128) | 16,384 pJ | 163.8 pJ | **100x** |
 
 ---
 
-## 🔬 Multi-Architecture Comparison
+## Roadmap
 
-**PROVEN:** AIMC works across RRAM, PCM, and FeFET technologies with identical code.
+The following components are **designed but not yet implemented**:
 
-### Device Characteristics
+### Version 2: Device Virtualization
 
-| Metric | RRAM | PCM | FeFET |
-|--------|------|-----|-------|
-| **Speed** | 50 ns | 100 ns | **5 ns** |
-| **Energy** | 0.5 pJ | 2.0 pJ | **0.01 pJ** |
-| **Endurance** | 10^12 | 10^9 | **10^15** |
-| **Drift** | 3.13% | 7.82% | **0.78%** |
-| **Final Accuracy** | 98.56% | 99.76% | 99.49% |
+- [ ] Full Hardware Abstraction Layer integration
+- [ ] Multi-device runtime switching
+- [ ] Device capability discovery
+- [ ] Hot-swappable device backends
 
-### Key Findings
+### Version 3: Compiler Integration
 
-- ✓ All devices achieve **>98% accuracy** on identical workload
-- ✓ Same code runs on **RRAM, PCM, and FeFET** without modification
-- ✓ Runtime handles device differences **transparently**
-- ✓ Optimal device depends on application:
-  - **RRAM**: Best endurance, moderate speed
-  - **PCM**: High density, higher drift
-  - **FeFET**: Fastest, lowest energy, best drift
+- [ ] Analog Compiler (PyTorch → analog operations)
+- [ ] Tile mapping optimization
+- [ ] Weight partitioning
+- [ ] Operation fusion
 
-### Run the Comparison
+### Version 4: Runtime Optimizer
 
-```bash
-# Fast comparison with simulated devices
-python experiments/device_comparison_fast.py
+- [ ] Intelligent update decisions
+- [ ] Batch operation merging
+- [ ] Predictive calibration scheduling
+- [ ] Energy-aware execution
 
-# Full comparison with device models
-python experiments/device_comparison.py
-```
+### Version 5: Distributed Runtime
 
-### Generate Plots
+- [ ] Multi-chip coordination
+- [ ] Weight migration between chips
+- [ ] Distributed training support
+- [ ] Fault isolation
 
-```bash
-# Device comparison plot saved to:
-experiments/results/device_comparison.png
-```
+### Version 6: Production Features
+
+- [ ] Real hardware backend (MCU + DAC/ADC)
+- [ ] Hardware-in-the-loop testing
+- [ ] Power management
+- [ ] Security features
 
 ---
 
-## 🧪 Testing
+## Potential Impact
+
+If analog hardware achieves its projected efficiency and can be deployed with robust software infrastructure, the potential impact includes:
+
+### Energy Efficiency
+
+- AI inference energy could decrease by **100x**
+- Training costs could decrease significantly
+- Edge AI becomes viable for complex models
+
+### Hardware Ecosystem
+
+- Multiple analog memory vendors can compete
+- Software compatibility reduces vendor lock-in
+- New hardware startups can reach market faster
+
+### Accessibility
+
+- AI development becomes accessible to smaller teams
+- Edge devices gain AI capabilities
+- Cloud dependency decreases
+
+**Note**: These are projected benefits contingent on analog hardware maturation and deployment with robust software infrastructure.
+
+---
+
+## Quick Start
 
 ```bash
-# Run all integration tests
+git clone https://github.com/JagadeeshwaranCEO/AIMC.git
+cd AIMC
+pip install -r requirements.txt
+
+# Run integration tests
 python tests/test_runtime.py
 
-# Run 2D crossbar validation
-python tests/test_2d_mvm.py
+# Run training convergence proof
+python experiments/training_proof.py
 
-# Run fault injection test
-python runtime/fault_injection.py
-
-# Run adaptive calibration test
-python runtime/adaptive_calibration.py
+# Run device comparison
+python experiments/device_comparison_fast.py
 ```
-
-**All 6 integration tests passing.**
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 AIMC/
 ├── runtime/
-│   ├── emulator.py              # AnalogCell + AnalogCrossbar2D
+│   ├── emulator.py              # Analog cell + crossbar emulation
 │   ├── vcm.py                   # Virtual Conductance Manager
 │   ├── isa.py                   # Instruction Set Architecture
 │   ├── scheduler.py             # Runtime Scheduler
 │   ├── device_manager.py        # Device Manager
 │   ├── torch_bridge.py          # PyTorch Integration
 │   ├── analog_training.py       # Analog Backpropagation
-│   ├── fault_injection.py       # Hardware Failure Simulation
+│   ├── fault_injection.py       # Fault Simulation
 │   ├── adaptive_calibration.py  # Self-Healing Calibration
-│   ├── performance_benchmark.py # Digital vs Analog
-│   ├── benchmark.py             # MNIST MLP Benchmark
-│   ├── telemetry.py             # Metrics Collection
-│   ├── visual_demo.py           # ASCII Art Visualization
-│   ├── calibration.py           # Power Law Fitting
-│   ├── profiler.py              # Device Profiler
-│   ├── pulse_compiler.py        # Pulse Sequence Compiler
-│   └── closed_loop.py           # Closed-Loop Control
-├── dashboard/
-│   ├── app.py                   # Streamlit Dashboard
-│   └── mock_data.py             # Mock Device Data
+│   ├── sparse_probe.py          # Sparse Probe Calibration
+│   ├── kalman_filter.py         # Drift Exponent Tracking
+│   ├── tiki_taka.py             # Asymmetry Correction
+│   ├── tick_scheduler.py        # Adaptive Tick Scheduling
+│   ├── compensation_tick.py     # Runtime Health Monitor
+│   ├── hal.py                   # Hardware Abstraction Layer
+│   ├── analog_virtual_memory.py # Analog Virtual Memory
+│   ├── optimizer.py             # Runtime Optimizer
+│   └── telemetry.py             # Metrics Collection
+├── experiments/
+│   ├── training_proof.py        # Training Convergence Proof
+│   ├── device_comparison.py     # Multi-Architecture Comparison
+│   └── results/                 # Experiment Results
 ├── tests/
-│   ├── test_runtime.py          # Integration Tests
-│   ├── test_2d_mvm.py           # 2D Crossbar Tests
-│   ├── test_pulse_compiler.py   # Pulse Compiler Tests
-│   └── smoke_test.py            # Smoke Tests
-├── schemas/
-│   └── device_profile.schema.json
-├── requirements.txt
-├── LICENSE
-└── README.md
+│   └── test_runtime.py          # Integration Tests
+└── dashboard/
+    └── app.py                   # Streamlit Dashboard
 ```
 
 ---
 
-## 🔬 How It Works
+## Research Positioning
 
-### 1. Weight Programming
+We present a **prototype Analog Compute Runtime architecture** and validate several of its core runtime services—device abstraction, calibration scheduling, and closed-loop conductance control—using simulation.
 
-```python
-from runtime.torch_bridge import ACRAnalogLinear
-
-# Standard PyTorch layer - runs on analog crossbar
-layer = ACRAnalogLinear(in_features=784, out_features=128)
-output = layer(input_tensor)  # Executes VMM on analog hardware
-```
-
-### 2. Training on Analog
-
-```python
-from runtime.analog_training import AnalogMLP, AnalogTrainer
-
-model = AnalogMLP()  # 784→128→64→10, all analog
-trainer = AnalogTrainer(model, lr=0.01)
-
-loss, accuracy, metrics = trainer.train_step(inputs, targets)
-# Gradients computed through analog non-idealities
-# Hardware noise acts as implicit regularization
-```
-
-### 3. Fault-Tolerant Execution
-
-```python
-from runtime.fault_injection import FaultTolerantCrossbar
-
-# Inject realistic hardware faults
-tolerant = FaultTolerantCrossbar(crossbar)
-tolerant.initialize_with_faults(fault_severity=2.0)
-
-# Execute with automatic fault handling
-output = tolerant.forward_vmm_tolerant(input_vector)
-# Stuck cells remapped, noise filtered, drift compensated
-```
+This work is positioned as **systems software research** rather than a complete product. The runtime is designed to enable future analog AI accelerators, not to replace existing digital computing.
 
 ---
 
-## 🎯 Multi-Hardware Support
-
-AIMC is designed for **any analog memory technology**:
-
-```
-Today (Emulated)              Future (Real Hardware)
-─────────────────            ─────────────────────
-AnalogCrossbar2D    ──────►  RRAM Crossbar Driver
-(emulator.py)               (hardware/rram.py)
-
-                            PCM Crossbar Driver
-                            (hardware/pcm.py)
-
-                            FeFET Crossbar Driver
-                            (hardware/fefet.py)
-
-                            Memristor Crossbar Driver
-                            (hardware/memristor.py)
-```
-
-**The ISA, Scheduler, Device Manager, VCM, and PyTorch Bridge never change.** Only the bottom layer swaps out.
-
----
-
-## 🏆 Why This Wins
-
-| Criteria | AIMC | Typical Projects |
-|----------|------|------------------|
-| **Innovation** | First analog TRAINING runtime | Inference only |
-| **Technical Depth** | 17 modules, 3500+ lines | Basic emulator |
-| **Real-World Impact** | 100x energy efficiency | Theoretical |
-| **Architecture** | Hardware-agnostic (RRAM/PCM/FeFET) | Single device |
-| **Demo Quality** | Live fault injection + calibration | Static charts |
-
----
-
-## 🗺️ Roadmap
-
-### Phase 4 (Next)
-- [ ] Real hardware backend (MCU + DAC/ADC)
-- [ ] Hardware-in-the-loop testing
-- [ ] Multi-tile parallel execution
-- [ ] Training convergence validation
-
-### Phase 5 (Production)
-- [ ] Compiler optimization (tile mapping, weight partitioning)
-- [ ] Fault tolerance (redundancy, error correction)
-- [ ] Power management (sleep states, voltage scaling)
-- [ ] Multi-chip coordination
-
----
-
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
@@ -402,8 +286,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with ❤️ for the future of analog AI**
+**Analog Compute Runtime (ACR)**
 
-*Analog Compute Runtime (ACR) is a hardware-agnostic software runtime that abstracts unreliable analog memory into a reliable computing platform, enabling future analog AI accelerators to be programmed as easily as today's GPUs.*
+*A hardware-agnostic runtime for analog in-memory AI*
 
 </div>
