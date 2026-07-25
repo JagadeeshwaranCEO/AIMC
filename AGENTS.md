@@ -84,7 +84,8 @@ grad_weight = grad_output.T @ input    # Not input.T @ grad_output
 - **Two critical bugs fixed** (backward transpose + weight sync)
 - **API unified** (`runtime/acr_runtime.py` - `ACRRuntime` class)
 - **Specification written** (`ACR_RUNTIME_SPEC_v1.md`)
-- **Project completion: 78%** (code 85%, tests 92%, spec 80%, whitepaper 30%)
+- **Whitepaper written** (`WHITEPAPER.md`)
+- **Project completion: 88%** (code 85%, tests 92%, spec 80%, whitepaper 85%)
 
 ## Git Conventions
 
