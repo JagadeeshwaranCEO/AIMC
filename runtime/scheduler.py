@@ -165,8 +165,8 @@ class RuntimeScheduler:
                 
                 scale = result.correction_scale
                 offset = result.correction_offset
-                self.tiles[tile_id]["correction_scale"] = scale
-                self.tiles[tile_id]["correction_offset"] = offset
+                self.device_mgr.tiles[tile_id]["correction_scale"] = scale
+                self.device_mgr.tiles[tile_id]["correction_offset"] = offset
                 
             else:
                 if tile_info["drift_accumulated"] > self.drift_threshold:
