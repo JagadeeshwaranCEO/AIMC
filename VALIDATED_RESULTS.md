@@ -13,7 +13,7 @@
 | Runtime modules | 30 files | `ls runtime/*.py \| wc -l` |
 | Test files | 9 files | `ls tests/*.py \| wc -l` |
 | Experiment files | 9 files | `ls experiments/*.py \| wc -l` |
-| Tests passing | **226/226 (100%)** | `python3 tests/test_acr_runtime.py` etc. |
+| Tests passing | **232/232 (100%)** | `python3 tests/test_*.py` (9 test files) |
 
 ---
 
@@ -148,7 +148,7 @@ FeFET drift:  0.78%
 
 **What's real:**
 - 15,755 lines of code
-- 226/226 tests passing
+- 232/232 tests passing (9 test files)
 - 100x energy improvement (analytical model)
 - >98% accuracy across RRAM/PCM/FeFET
 - 3.2% open-loop calibration error

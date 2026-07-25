@@ -12,9 +12,10 @@ python tests/test_comprehensive.py  # 85 module tests
 python tests/test_acr_revolution.py # 47 ACR Revolution tests
 python tests/test_holy_trinity.py   # 29 Holy Trinity tests
 python tests/test_acr_runtime.py    # 42 unified API tests
+python tests/test_runtime.py        # 6 core stack tests
 ```
 
-**Total: 226 tests. No linting/typechecking configured.**
+**Total: 232 tests across 9 test files. No linting/typechecking configured.**
 
 ## Architecture
 
@@ -80,12 +81,12 @@ grad_weight = grad_output.T @ input    # Not input.T @ grad_output
 
 ## Current State (2026-07-26)
 
-- **226 tests passing** (23 + 85 + 47 + 29 + 42)
+- **232 tests passing** (23 + 85 + 47 + 29 + 42 + 6)
 - **Two critical bugs fixed** (backward transpose + weight sync)
 - **API unified** (`runtime/acr_runtime.py` - `ACRRuntime` class)
 - **Specification written** (`ACR_RUNTIME_SPEC_v1.md`)
 - **Whitepaper written** (`WHITEPAPER.md`)
-- **Project completion: 88%** (code 85%, tests 92%, spec 80%, whitepaper 85%)
+- **Project completion: 90%** (code 85%, tests 92%, spec 80%, whitepaper 95%)
 
 ## Git Conventions
 

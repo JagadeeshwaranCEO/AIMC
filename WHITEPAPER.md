@@ -351,7 +351,7 @@ The Compensation Tick maintains accuracy close to the no-drift baseline througho
 | Total Python lines | 15,755 |
 | Runtime modules | 30 files |
 | Test files | 9 files |
-| Tests passing | 226/226 (100%) |
+| Tests passing | 232/232 (100%) |
 | Lines of test code | 3,183 |
 
 ## VI. Related Work
